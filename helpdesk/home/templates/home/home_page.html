@@ -1,21 +1,23 @@
 {% extends "base.html" %}
-{% load static %}
+
+{% load wagtailcore_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
-{% block extra_css %}
-
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
-{% endblock extra_css %}
-
 {% block content %}
+    <a href="https://sso.trade.uat.uktrade.io/logout/">Logout</a>
+    {{ user }}
 
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-{% include 'home/welcome_page.html' %}
+    <h1>{{ page.title }}</h1>
 
-{% endblock content %}
+    {{ page.body|richtext }}
+
+
+   {% for post in page.get_children %}
+        <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+        {{ post.specific.intro }}
+        {{ post.specific.body|richtext }}
+    {% endfor %}
+
+{% endblock %}
+
