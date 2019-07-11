@@ -28,19 +28,7 @@
 
 
     {# Global stylesheets #}
-    <!--[if !IE 8]><!-->
-    <link href="/govuk-frontend/all.css" rel="stylesheet"/>
-    <!--<![endif]-->
-
-    <!--[if IE 8]>
-    <link href="/govuk-frontend/all-ie8.css" rel="stylesheet"/>
-    <![endif]-->
-
-    <!--[if lt IE 9]>
-    <script src="/html5-shiv/html5shiv.js"></script>
-    <![endif]-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/helpdesk.css' %}">
-
     <meta property="og:image" content="/assets/images/govuk-opengraph-image.png">
 
 
@@ -122,7 +110,7 @@
 {# Override this in templates to add extra javascript #}
 {% endblock %}
 
-<script src="/govuk-frontend/all.js"></script>
+<script src="/frontend/node_modules/govuk-frontend/all.js"></script>
 <script>
     window.GOVUKFrontend.initAll()
 
