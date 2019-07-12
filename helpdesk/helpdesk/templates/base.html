@@ -5,12 +5,12 @@
     <meta charset="utf-8"/>
     <title>
         {% block title %}
-        {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+            {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
         {% endblock %}
         {% block title_suffix %}
-        {% with self.get_site.site_name as site_name %}
-        {% if site_name %}- {{ site_name }}{% endif %}
-        {% endwith %}
+            {% with self.get_site.site_name as site_name %}
+                {% if site_name %}- {{ site_name }}{% endif %}
+            {% endwith %}
         {% endblock %}
     </title>
     <meta name="description" content=""/>
@@ -33,7 +33,7 @@
 
 
     {% block extra_css %}
-    {# Override this in templates to add extra stylesheets #}
+        {# Override this in templates to add extra stylesheets #}
     {% endblock %}
 </head>
 
@@ -59,24 +59,58 @@
                      class="govuk-header__logotype-crown-fallback-image"></image>
             </svg>
             <span class="govuk-header__logotype-text">
-              GOV.UK
+                  GOV.UK
             </span>
           </span>
             </a>
         </div>
+        <div class="govuk-header__content">
+
+            <a href="{% url 'wagtail_serve' '' %}" class="govuk-header__link govuk-header__link--service-name">
+                {% with self.get_site.site_name as site_name %}
+                    {{ site_name }}
+                {% endwith %}
+            </a>
+            {#            <button type="button" role="button" class="govuk-header__menu-button js-header-toggle"#}
+            {#                    aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu#}
+            {#            </button>#}
+            {#            <nav>#}
+            {#                <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">#}
+            {#                    <li class="govuk-header__navigation-item govuk-header__navigation-item--active">#}
+            {#                        <a class="govuk-header__link" href="#1">#}
+            {#                            {{ user.email }}#}
+            {#                        </a>#}
+            {#                    </li>#}
+            {#                    <li class="govuk-header__navigation-item">#}
+            {#                        <a class="govuk-header__link" href="https://sso.trade.uat.uktrade.io/logout/">#}
+            {#                            Logout#}
+            {#                        </a>#}
+            {#                    </li>#}
+            {#                </ul>#}
+            {#            </nav>#}
+        </div>
     </div>
 </header>
 
-{% wagtailuserbar %}
 
 <div class="govuk-width-container">
-    <main class="govuk-main-wrapper " id="main-content" role="main">
-        <h1 class="govuk-heading-xl">Default page template</h1>
-    </main>
+    <div class="govuk-phase-banner">
+
+        <p class="govuk-phase-banner__content">
+            <strong class="govuk-tag govuk-phase-banner__content__tag ">
+                alpha
+            </strong>
+            <span class="govuk-phase-banner__text">
+                This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+            </span>
+        </p>
+    </div>
 </div>
 
-{% block content %}{% endblock %}
 
+{% wagtailuserbar %}
+
+{% block content %}{% endblock %}
 
 <footer class="govuk-footer " role="contentinfo">
     <div class="govuk-width-container ">
@@ -107,7 +141,7 @@
 <script type="text/javascript" src="{% static 'js/helpdesk.js' %}"></script>
 
 {% block extra_js %}
-{# Override this in templates to add extra javascript #}
+    {# Override this in templates to add extra javascript #}
 {% endblock %}
 
 <script src="/static/js/all.js"></script>
