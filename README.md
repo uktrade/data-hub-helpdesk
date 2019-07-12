@@ -51,4 +51,16 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
+### Animated gif support
+
+The Wand pip package requires `imagemagick` to be installed for animated gif support
+
+http://docs.wand-py.org/en/0.4.2/guide/install.html
+
+https://github.com/wagtail/wagtail/issues/2505
+
+```
+brew install imagemagick
+```
+
 
