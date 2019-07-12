@@ -180,7 +180,3 @@ BASE_URL = 'http://example.com'
 AUTHBROKER_URL = env['AUTHBROKER_URL']
 AUTHBROKER_CLIENT_ID = env['AUTHBROKER_CLIENT_ID']
 AUTHBROKER_CLIENT_SECRET = env['AUTHBROKER_CLIENT_SECRET']
-
-import logging
-logger = logging.getLogger(__name__)
-logger.error(PROJECT_DIR)
