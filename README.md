@@ -2,7 +2,7 @@
 
 ## Getting started
 
-### Local Development
+## Local Development
 
 Pre-requisites
 - python3
