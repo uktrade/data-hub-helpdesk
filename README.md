@@ -63,4 +63,20 @@ https://github.com/wagtail/wagtail/issues/2505
 brew install imagemagick
 ```
 
+# Issues with local dev
+
+## Unable to install pip dependencies
+
+```
+writing manifest file 'pip-egg-info/psycopg2.egg-info/SOURCES.txt'
+
+    Error: pg_config executable not found.
+
+    pg_config is required to build psycopg2 from source.  Please add the directory
+```
+
+Try 
+
+    brew install postgresql
+
 
