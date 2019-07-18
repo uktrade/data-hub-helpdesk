@@ -117,8 +117,9 @@ WSGI_APPLICATION = 'helpdesk.wsgi.application'
 #     },
 # }
 
-DATABASES = {}
-DATABASES['default'] =  dj_database_url.config()
+DATABASES = {'default': dj_database_url.config(
+    default='postgres://postgres:postgres@localhost:5432/helpdesk'
+)}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
