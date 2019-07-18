@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'authbroker_client',
 
     'article',
@@ -105,17 +106,6 @@ WSGI_APPLICATION = 'helpdesk.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'CONN_MAX_AGE': 0,
-#         'NAME': env['POSTGRES_DB'],
-#         'USER': env['POSTGRES_USER'],
-#         'PASSWORD': env['POSTGRES_PASSWORD'],
-#         'HOST': env['POSTGRES_HOST'],
-#     },
-# }
 
 DATABASES = {'default': dj_database_url.config(
     default='postgres://postgres:postgres@localhost:5432/helpdesk'
