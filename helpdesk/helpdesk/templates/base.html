@@ -110,7 +110,7 @@
         </p>
     </div>
 
-
+    {% block breadcrumbs %}
     <div class="govuk-breadcrumbs">
         <ol class="govuk-breadcrumbs__list">
             <li class="govuk-breadcrumbs__list-item">
@@ -124,12 +124,7 @@
             </li>
         </ol>
     </div>
-
-    <form class="search-form" action="/search" method="get" role="search">
-        <input class="govuk-input search-form__input" id="search-text" name="query" type="text"
-               placeholder="Search text and press enter" spellcheck="false"/>
-        <button class="search-form__button" type="submit"></button>
-    </form>
+    {% endblock %}
 
 
 </div>
