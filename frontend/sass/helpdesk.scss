@@ -1,4 +1,6 @@
 $govuk-assets-path: '/static/assets/';
+$govuk-page-width: 1160px;
+
 
 //$govuk-global-styles: true;
 
@@ -8,10 +10,8 @@ $govuk-assets-path: '/static/assets/';
 @import "article";
 
 .search-form {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
   border: $govuk-border-width-form-element solid $govuk-input-border-colour;
-  width: 800px;
+  width: 100%;
   position: relative;
 }
 
@@ -68,4 +68,23 @@ $govuk-assets-path: '/static/assets/';
   //position: absolute;
   //top: 0;
   //right: 0;
+}
+
+//TODO move this to separate scss file
+
+.govuk-dit-sidenav {
+  @extend .govuk-list;
+
+  li {
+    margin-bottom: 1rem;
+  }
+
+  a {
+    @extend .govuk-link;
+  }
+}
+
+.govuk-dit-hero-container {
+  // nb this just returns standard govuk- blue
+  background-color:  govuk-organisation-colour("department-for-international-trade", true);
 }
