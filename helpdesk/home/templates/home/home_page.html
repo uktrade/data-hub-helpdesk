@@ -27,13 +27,18 @@
                         Recent activity
                     </h2>
 
-                    {% for post in page.get_children.specific %}
+                    {% for post in recent %}
                         <h4 class="govuk-heading-m govuk-!-margin-bottom-1 article-list__title">
                             <a class="govuk-link"
                                href="{% pageurl post %}">{{ post.title }}</a>
                         </h4>
                         <p class="govuk-body-s govuk-!-margin-bottom-1">
-                            {{ post.date|date:"d/m/Y" }}
+                            <span class="article-list__date">
+                                {{ post.date|date:"d/m/Y" }}
+                            </span>
+                            <span class="article-list__author">
+                                Author name
+                            </span>
                         </p>
                         {% if post.intro %}
                             <p class="govuk-body article-list__short-description">
@@ -44,28 +49,18 @@
 
                 </div>
                 <div class="govuk-grid-column-one-third govuk-!-padding-left-7">
-                    <div class="article-summary-link">
+
+                    {% for category in child_categories %}
                         <h2 class="govuk-heading-s">
-                            <a href="#" class="govuk-link--no-visited-state"
-                               onclick="javascript:alert('not implemented yet')">
-                                How to articles</a>
-                            <br>
-                        </h2>
-                        <p class="govuk-body">
-                            Articles providing guidance and tips for using Data Hub.
-                            'How to' guides</p>
-                    </div>
-                    <div class="article-summary-link">
-                        <h2 class="govuk-heading-s">
-                            <a href="#" class="govuk-link--no-visited-state"
-                               onclick="javascript:alert('not implemented yet')">
-                                Updates
+                            <a href="{{ category.url }}" class="govuk-link--no-visited-state">
+                                {{ category.title }}
                             </a>
                         </h2>
                         <p class="govuk-body">
-                            Announcements, updates, release notes and roadmap from the Data Hub team
+                            {{ category.intro }}
                         </p>
-                    </div>
+                    {% endfor %}
+
                 </div>
             </div>
         </main>

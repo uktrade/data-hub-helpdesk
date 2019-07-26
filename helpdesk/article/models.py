@@ -10,7 +10,7 @@ from wagtail.search import index
 
 
 class ArticleIndexPage(Page):
-    intro = RichTextField(blank=True)
+    intro = models.CharField(max_length=250, blank=True, null=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('intro', classname="full")
@@ -36,3 +36,10 @@ class ArticlePage(Page):
         FieldPanel('intro'),
         StreamFieldPanel('body'),
     ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super(ArticlePage, self).get_context(request, *args, **kwargs)
+
+        context['siblings'] = ArticlePage.objects.live().sibling_of(self).order_by('title')
+
+        return context
