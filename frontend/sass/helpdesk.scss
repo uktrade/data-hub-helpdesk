@@ -56,7 +56,7 @@ $govuk-page-width: 1160px;
 }
 
 .article-list__short-description {
-  //width: 80%;
+  width: 80%;
 }
 
 .article-date {
@@ -84,6 +84,12 @@ $govuk-page-width: 1160px;
   background-color: govuk-organisation-colour("department-for-international-trade", true);
 }
 
+.hero-container--search {
+  width: 80%;
+  margin:0 auto;
+}
+
+// To remove the border from the phase banner
 .template-homepage, .template-searchresults {
   .govuk-phase-banner {
     border-bottom: none;

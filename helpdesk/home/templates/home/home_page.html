@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% load wagtailcore_tags %}
+{% load navigation_tags wagtailcore_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
@@ -35,13 +35,13 @@
                                href="{% pageurl post %}">{{ post.title }}</a>
                         </h4>
                         <p class="govuk-body-s govuk-!-margin-bottom-1">
-
-                            <span class="article-author">
-                                {{ post.owner.first_name }} {{ post.owner.last_name }}
-                            </span>
                             <span class="article-date">
                                 {{ post.date|date:"d/m/Y" }}
                             </span>
+                            <span class="article-author">
+                                {% article_author post %}
+                            </span>
+
                         </p>
                         {% if post.intro %}
                             <p class="govuk-body article-list__short-description">

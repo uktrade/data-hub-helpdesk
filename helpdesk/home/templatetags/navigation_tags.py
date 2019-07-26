@@ -22,14 +22,23 @@ def breadcrumbs(context):
 
 
 @register.inclusion_tag('tags/author.html', takes_context=True)
-def article_author(context):
-    self = context.get('self')
-    name = ''
-
-    if self is None:
-        name = 'Anon'
+def article_author(context, authored_object=None):
+    if authored_object is None:
+        page = context.get('self')
     else:
-        name = f'{self.owner.first_name} {self.owner.last_name}'
+        page = authored_object
+
+    model = {
+        'name': ''
+    }
+
+    if page is None:
+        return model
+
+    if page.owner is None:
+        return model
+
+    name = f'{page.owner.first_name} {page.owner.last_name}'
 
     return {
         'name': name

@@ -16,6 +16,13 @@ class ArticleIndexPage(Page):
         FieldPanel('intro', classname="full")
     ]
 
+    def get_context(self, request, *args, **kwargs):
+        context = super(ArticleIndexPage, self).get_context(request, *args, **kwargs)
+
+        context['siblings'] = ArticleIndexPage.objects.live().sibling_of(self).order_by('title')
+
+        return context
+
 
 class ArticlePage(Page):
     date = models.DateField("Post date")
