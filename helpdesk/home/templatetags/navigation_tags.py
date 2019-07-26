@@ -19,3 +19,18 @@ def breadcrumbs(context):
         'ancestors': ancestors,
         'request': context['request'],
     }
+
+
+@register.inclusion_tag('tags/author.html', takes_context=True)
+def article_author(context):
+    self = context.get('self')
+    name = ''
+
+    if self is None:
+        name = 'Anon'
+    else:
+        name = f'{self.owner.first_name} {self.owner.last_name}'
+
+    return {
+        'name': name
+    }

@@ -5,12 +5,14 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    <div class="govuk-dit-hero-container">
+    <div class="hero-container">
         <div class="govuk-width-container">
             <div class="govuk-main-wrapper">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-full">
-                        {% include 'search_partial.html' %}
+                        <div class="hero-container--search">
+                            {% include 'search_partial.html' %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -33,11 +35,12 @@
                                href="{% pageurl post %}">{{ post.title }}</a>
                         </h4>
                         <p class="govuk-body-s govuk-!-margin-bottom-1">
-                            <span class="article-list__date">
-                                {{ post.date|date:"d/m/Y" }}
+
+                            <span class="article-author">
+                                {{ post.owner.first_name }} {{ post.owner.last_name }}
                             </span>
-                            <span class="article-list__author">
-                                Author name
+                            <span class="article-date">
+                                {{ post.date|date:"d/m/Y" }}
                             </span>
                         </p>
                         {% if post.intro %}

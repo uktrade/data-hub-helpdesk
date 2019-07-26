@@ -35,7 +35,15 @@
 
                 <div class="govuk-grid-column-three-quarters">
                     <h1 class="govuk-heading-m">{{ page.title }}</h1>
-                    <p class="govuk-body">{{ page.authors }} {{ page.date }}</p>
+                    <p class="govuk-body">
+                        <span class="article-date">
+                        Last updated {{ page.date|date:"j N Y" }}
+                        </span>
+
+                        <span class="article-author">
+                        by {% article_author %}
+                        </span>
+                    </p>
                     {{ page.body }}
                 </div>
         </main>
