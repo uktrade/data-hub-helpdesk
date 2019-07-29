@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'authbroker_client',
 
     'article',
+    'storages', 
 ]
 
 MIDDLEWARE = [
@@ -165,8 +166,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
+#MEDIA_URL = '/media/'
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "helpdesk"
@@ -178,3 +178,13 @@ BASE_URL = 'http://example.com'
 AUTHBROKER_URL = env['AUTHBROKER_URL']
 AUTHBROKER_CLIENT_ID = env['AUTHBROKER_CLIENT_ID']
 AUTHBROKER_CLIENT_SECRET = env['AUTHBROKER_CLIENT_SECRET']
+
+AWS_DEFAULT_ACL = None
+
+AWS_STORAGE_BUCKET_NAME = env['AWS_STORAGE_BUCKET_NAME'] 
+AWS_ACCESS_KEY_ID = env['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY= env['AWS_SECRET_ACCESS_KEY']
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+MEDIA_URL = 'https://%s/' % AWS_S3_CUSTOM_DOMAIN
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
