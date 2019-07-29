@@ -19,7 +19,11 @@ class ArticleIndexPage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super(ArticleIndexPage, self).get_context(request, *args, **kwargs)
 
-        context['siblings'] = ArticleIndexPage.objects.live().sibling_of(self).order_by('title')
+        children = ArticlePage.objects.live().descendant_of(self).not_type(ArticleIndexPage).order_by('-date')
+        siblings = ArticleIndexPage.objects.live().sibling_of(self).order_by('title')
+
+        context['children'] = children
+        context['siblings'] = siblings
 
         return context
 
