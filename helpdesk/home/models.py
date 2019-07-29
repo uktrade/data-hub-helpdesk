@@ -1,4 +1,4 @@
-from django.db import models
+from django.conf import settings
 
 from wagtail.core.models import Page
 
@@ -30,5 +30,7 @@ class HomePage(Page):
         context['recent'] = recent
         context['child_categories'] = child_categories
         context['featured_column_classname'] = featured_column_classname
+
+        print(settings.VCAP_SERVICES)
 
         return context
