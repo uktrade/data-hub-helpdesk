@@ -38,8 +38,9 @@
             </div>
 
             <div class="govuk-grid-column-one-quarter">
+                {% if siblings %}
                 <h2 class="govuk-heading-s">Articles in this section</h2>
-
+                {% endif %}
                 <ul class="govuk-dit-sidenav">
                     {% for sibling in siblings %}
                     <li>

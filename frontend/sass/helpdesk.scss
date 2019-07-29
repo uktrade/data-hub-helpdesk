@@ -56,7 +56,10 @@ $govuk-page-width: 1160px;
 }
 
 .article-list__short-description {
-  width: 80%;
+  //width: 80%;
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .article-date {

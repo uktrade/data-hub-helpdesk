@@ -28,7 +28,12 @@
                        href="{% pageurl post %}">{{ post.title }}</a>
                 </h4>
                 <p class="govuk-body-s govuk-!-margin-bottom-1">
-                    {{ post.date|date:"d/m/Y" }}
+                   <span class="article-date">
+                                {{ post.date|date:"d/m/Y" }}
+                            </span>
+                    <span class="article-author">
+                                {% article_author post %}
+                    </span>
                 </p>
                 {% if post.intro %}
                 <p class="govuk-body article-list__short-description">
